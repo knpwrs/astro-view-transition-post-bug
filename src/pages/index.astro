@@ -1,5 +1,10 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 
+if (Astro.request.method === 'POST') {
+  const text = await Astro.request.text();
+  console.log({ text });
+}
 ---
 
 <html lang="en">
@@ -9,8 +14,12 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
+		<ViewTransitions />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<form method="post">
+		  <input name="field">
+		  <button type="submit">Submit</button>
+		</form>
 	</body>
 </html>
